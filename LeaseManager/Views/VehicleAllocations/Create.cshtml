@@ -1,0 +1,88 @@
+﻿@model LeaseManager.Models.VehicleAllocation
+
+@{
+    ViewBag.Title = "Vehicle Allocation";
+}
+
+<h2 class="title text-center">@ViewBag.Title</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <tr>
+                    <th>@Html.LabelFor(model => model.DateFrom)</th>
+                    <td>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar-o"></i>
+                            </div>
+                            @Html.EditorFor(m => m.DateFrom, new { htmlAttributes = new { @type = "date", @class = "form-control", @required = "required", @placeholder = "Date From", min = DateTime.Now.ToString("yyyy-MM-dd") } })
+                        </div>
+                        @Html.ValidationMessageFor(m => m.DateFrom, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>@Html.LabelFor(model => model.DateTo)</th>
+                    <td>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar-o"></i>
+                            </div>
+                            @Html.EditorFor(m => m.DateTo, new { htmlAttributes = new { @type = "date", @class = "form-control", @required = "required", @placeholder = "Date To", min = DateTime.Now.ToString("yyyy-MM-dd") } })
+                        </div>
+                        @Html.ValidationMessageFor(m => m.DateTo, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>Vehicle</th>
+                    <td>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            @Html.DropDownList("VehicleId", null, "--- Please Select ---", new { @class = "form-control", @required = "required" })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.VehicleId, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>Branch</th>
+                    <td>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            @Html.DropDownList("BranchId", null, "--- Please Select ---", new { @class = "form-control", @required = "required" })
+                        </div>
+                        @Html.ValidationMessageFor(model => model.BranchId, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>@Html.LabelFor(model => model.Purpose)</th>
+                    <td>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-pencil"></i>
+                            </div>
+                            @Html.TextBoxFor(m => m.Purpose, new { @class = "form-control", @placeholder = "Purpose" })
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Purpose, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+            </table>
+            <div class="row text-center">
+                <a class="btn btn-default" href="@Url.Action("Index","VehicleAllocations")">
+                    <i class="fa fa-angle-left"></i>
+                    Back
+                </a>
+                <input type="submit" class="btn btn-default" value="Save" />
+            </div>
+        </div>
+    </div>
+
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

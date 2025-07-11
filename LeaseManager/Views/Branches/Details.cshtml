@@ -1,0 +1,47 @@
+﻿@model LeaseManager.Models.Branch
+
+@{
+    ViewBag.Title = "Branch Details";
+}
+
+<h2 class="title text-center">@ViewBag.Title</h2>
+<div class="row">
+    <div class="col-md-6">
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <td>
+                    <div class="input-group">
+                        @Html.DisplayFor(m => m.Name, new { @class = "form-control", @placeholder = "Name" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <th style="width:200px">Location</th>
+                <td>
+                    <div class="input-group">
+
+                        @Html.DisplayFor(m => m.Location, new { @class = "form-control", @placeholder = "Location" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Location, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <th>Route</th>
+                <td>
+                    <div class="input-group">
+                        @Html.DisplayFor(m => m.ContactNumber, new { @class = "form-control", @placeholder = "Contact Number" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.ContactNumber, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <a class="btn btn-default" href="@Url.Action("Index","Branches")">
+        <i class="fa fa-angle-left"></i>
+        Back to List
+    </a>
+</div>

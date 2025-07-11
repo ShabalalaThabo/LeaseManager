@@ -1,0 +1,95 @@
+﻿@model LeaseManager.ViewModels.ReportViewModel
+
+@{
+    ViewBag.Title = "Vehicle Leasing Report";
+}
+
+<div class="report-container">
+    <h2>Vehicle Manufacturer Distribution Report</h2>
+
+    <div class="report-section">
+        <h3>Manufacturers Per Supplier</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Supplier</th>
+                    <th>Manufacturer Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.SupplierManufacturerCounts)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Count</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr class="total-row">
+                    <td><strong>Total</strong></td>
+                    <td><strong>@Model.TotalSupplierManufacturers</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="report-section">
+        <h3>Manufacturers Per Branch</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Branch</th>
+                    <th>Manufacturer Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.BranchManufacturerCounts)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Count</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr class="total-row">
+                    <td><strong>Total</strong></td>
+                    <td><strong>@Model.TotalBranchManufacturers</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="report-section">
+        <h3>Manufacturers Per Client</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Client</th>
+                    <th>Manufacturer Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ClientManufacturerCounts)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Count</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr class="total-row">
+                    <td><strong>Total</strong></td>
+                    <td><strong>@Model.TotalClientManufacturers</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="summary-section">
+        <h4>Overall Totals</h4>
+        <p>Total Unique Manufacturers in System: @Model.TotalManufacturers</p>
+    </div>
+</div>
