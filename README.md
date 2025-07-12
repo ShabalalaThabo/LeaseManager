@@ -1,6 +1,6 @@
 
 📄 LeaseManager
-Release Notes and ERD (Included in the code)
+Release Notes, ERD & Database backup (Included in the source-code)
 
 ✅ Project Overview
 Title: LeaseManager
